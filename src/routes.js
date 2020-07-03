@@ -20,6 +20,6 @@ routes.post('/reset', ResetPasswordController.store);
 routes.use(authMiddleware);
 
 routes.put('/users', UserController.update);
-routes.delete('/users', UserController.destroy);
+routes.delete('/users/:id', UserController.delete);
 
 export default routes;
