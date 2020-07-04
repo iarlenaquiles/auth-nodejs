@@ -4,6 +4,12 @@ import bcrypt from 'bcryptjs';
 import User from '../schemas/User';
 
 class UserController {
+  async index(req, res) {
+    const users = await User.find();
+
+    return res.status(200).json({ users });
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       fullname: Yup.string().required(),
@@ -58,7 +64,7 @@ class UserController {
   async delete(req, res) {
     const { id } = req.params;
 
-    User.deleteOne({ _id: id }, function(err) {
+    User.deleteOne({ _id: id }, err => {
       if (err) return res.status(500).json({ message: 'User doesnot deleted' });
 
       return res.status(200).json({ message: 'User deleted' });
