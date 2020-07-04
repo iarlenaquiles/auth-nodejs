@@ -13,7 +13,7 @@ class RecoveryPasswordMail {
       subjet: 'Tecla T - Recuperação de senha',
       template: 'recoverypassword',
       context: {
-        url: `http://localhost:3333/auth/reset_password?token=${token}`,
+        url: `http://localhost:3000/auth/reset_password?token=${token}`,
         user: user.fullname,
       },
     });
